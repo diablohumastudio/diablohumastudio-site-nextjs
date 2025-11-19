@@ -21,6 +21,9 @@ export default function Header() {
           <Link href="#" className="site-page-link">
             NvC Game
           </Link>
+          <Link href="/video-production" className="site-page-link">
+            Videos
+          </Link>
         </div>
       </nav>
     </header>
