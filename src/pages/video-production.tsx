@@ -15,10 +15,11 @@ export default function VideoProduction() {
       <section className="hero-section hero-section-video">
         <div className="video-background">
           <video autoPlay loop muted playsInline className="hero-video">
-            <source src="/assets/video_production/CentralReguladoraCaudal.mp4" type="video/mp4" />
+            <source src="/assets/video_production/videos/CentralReguladoraCaudal.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="video-overlay"></div>
+          <div className="video-overlay video-overlay-black"></div>
         </div>
         <div className="hero-content-video">
           <h1>WE PRODUCE GOOD VIDEOS</h1>
@@ -26,41 +27,92 @@ export default function VideoProduction() {
         </div>
       </section>
 
-      {/* Video Showcase Section */}
+      {/* Corporate Training Section */}
       <section className="video-showcase-section">
-        <h2>OUR WORK</h2>
+        <h2 className="category-title">CORPORATE TRAINING</h2>
+        <div className="video-showcase-grid video-showcase-grid-small">
+          <div className="video-showcase-item">
+            <div className="video-container">
+              <video controls className="showcase-video">
+                <source src="" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <h3>Training Video Title</h3>
+            <p>Professional corporate training video description.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Business Presentations Section */}
+      <section className="video-showcase-section">
+        <h2 className="category-title">BUSINESS PRESENTATIONS</h2>
         <div className="video-showcase-grid">
           <div className="video-showcase-item">
             <div className="video-container">
-              <video controls className="showcase-video">
-                <source src="/assets/video_production/SectorizacionAguaPotablePuyo.mp4" type="video/mp4" />
+              <video controls className="showcase-video" poster="/assets/video_production/videos/business_presentations/SectorizacionAguaPotablePuyo_thumbnail.jpg">
+                <source src="/assets/video_production/videos/business_presentations/SectorizacionAguaPotablePuyo.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            <h3>Project Title 1</h3>
-            <p>Description of the first video project. Explain what was created, the goal, and the outcome.</p>
+            <h3>Sectorización Agua Potable Puyo</h3>
+            <p>Professional business presentation video.</p>
           </div>
 
           <div className="video-showcase-item">
             <div className="video-container">
-              <video controls className="showcase-video">
-                <source src="/assets/video_production/CPCSS.mp4" type="video/mp4" />
+              <video controls className="showcase-video" poster="/assets/video_production/videos/business_presentations/VideoCoandaMera_thumbnail.jpg">
+                <source src="/assets/video_production/videos/business_presentations/VideoCoandaMera.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            <h3>Project Title 2</h3>
-            <p>Description of the second video project. Highlight the unique aspects and achievements of this work.</p>
+            <h3>Video Coanda Mera</h3>
+            <p>Professional business presentation video.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Marketing/Promotional Content Section */}
+      <section className="video-showcase-section">
+        <h2 className="category-title">MARKETING / PROMOTIONAL CONTENT</h2>
+        <div className="video-showcase-grid video-showcase-grid-small">
+          <div className="video-showcase-item">
+            <div className="video-container">
+              <video controls className="showcase-video" poster="/assets/video_production/videos/marketing/CPCSS_thumbnail.jpg">
+                <source src="/assets/video_production/videos/marketing/CPCSS.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <h3>CPCSS</h3>
+            <p>Engaging marketing and promotional content.</p>
           </div>
 
           <div className="video-showcase-item">
             <div className="video-container">
-              <video controls className="showcase-video">
-                <source src="/assets/video_production/RenovaEnergia.mp4" type="video/mp4" />
+              <video controls className="showcase-video" poster="/assets/video_production/videos/marketing/RenovaEnergia_thumbnail.jpg">
+                <source src="/assets/video_production/videos/marketing/RenovaEnergia.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            <h3>Project Title 3</h3>
-            <p>Description of the third video project. Share the story behind the production and its impact.</p>
+            <h3>Renova Energía</h3>
+            <p>Engaging marketing and promotional content.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Games Video Content Section */}
+      <section className="video-showcase-section">
+        <h2 className="category-title">GAMES VIDEO CONTENT</h2>
+        <div className="video-showcase-grid video-showcase-grid-small">
+          <div className="video-showcase-item">
+            <div className="video-container">
+              <video controls className="showcase-video" poster="/assets/video_production/videos/games/NvC_Intro_sp-sub_thumbnail.jpg">
+                <source src="/assets/video_production/videos/games/NvC_Intro_sp-sub.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <h3>NvC Game Intro</h3>
+            <p>Game trailer and promotional content.</p>
           </div>
         </div>
       </section>
