@@ -33,8 +33,8 @@ export default function VideoProduction() {
         <div className="video-showcase-grid video-showcase-grid-small">
           <div className="video-showcase-item">
             <div className="video-container">
-              <video controls className="showcase-video">
-                <source src="" type="video/mp4" />
+              <video controls className="showcase-video" poster="/assets/video_production/videos/corporate_training/ProcesoEncendidoHidroelectricaLaurel_thumbnail.jpg">
+                <source src="/assets/video_production/videos/corporate_training/ProcesoEncendidoHidroelectricaLaurel.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
