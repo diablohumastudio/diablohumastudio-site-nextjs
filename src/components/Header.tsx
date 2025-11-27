@@ -13,6 +13,12 @@ export default function Header() {
           priority
         />
       </Link>
+      <input type="checkbox" id="menu-toggle" className="menu-toggle" />
+      <label htmlFor="menu-toggle" className="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
       <nav className="nav">
         <div className="site-pages-nav">
           <Link href="/courses" className="site-page-link">
