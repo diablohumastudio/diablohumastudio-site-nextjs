@@ -18,7 +18,7 @@ export default function Header() {
           <Link href="/courses" className="site-page-link">
             Courses
           </Link>
-          <Link href="#" className="site-page-link">
+          <Link href="/nvc-game" className="site-page-link">
             NvC Game
           </Link>
           <Link href="/video-production" className="site-page-link">
