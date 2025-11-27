@@ -30,6 +30,9 @@ export default function Header() {
           <Link href="/video-production" className="site-page-link">
             Videos
           </Link>
+          <Link href="/contact" className="site-page-link">
+            Contact
+          </Link>
         </div>
       </nav>
     </header>
