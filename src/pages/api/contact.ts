@@ -190,7 +190,7 @@ export default async function handler(
     return res.status(200).json({
       success: true,
       message: 'Email sent successfully',
-      id: data.id
+      emailId: data.data?.id
     });
 
   } catch (error: any) {
