@@ -45,6 +45,54 @@ export default function NvCGame() {
         />
       </section>
 
+      {/* Download Section */}
+      <section className="download-section">
+        <h2>GET THE GAME</h2>
+        <div className="direct-download-button">
+          <a href="https://drive.google.com/file/d/1IPZ9vxOSyJcEVuCUqxVbqTaoGCpmPqdu/view?usp=sharing" className="download-link" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/assets/NvC/demo_direct_download_button.svg"
+              alt="Demo Direct Download"
+              width={250}
+              height={81}
+              className="download-button-image"
+            />
+          </a>
+        </div>
+        <div className="platform-download-buttons">
+          <div className="download-link download-link-disabled" aria-disabled="true">
+            <Image
+              src="/assets/NvC/wishlist_in_steam_button.svg"
+              alt="Wishlist on Steam"
+              width={250}
+              height={71}
+              className="download-button-image"
+            />
+            <span className="coming-soon-badge">COMING SOON</span>
+          </div>
+          <div className="download-link download-link-disabled" aria-disabled="true">
+            <Image
+              src="/assets/NvC/download_in_app_store_button.svg"
+              alt="Download on App Store"
+              width={250}
+              height={81}
+              className="download-button-image"
+            />
+            <span className="coming-soon-badge">COMING SOON</span>
+          </div>
+          <div className="download-link download-link-disabled" aria-disabled="true">
+            <Image
+              src="/assets/NvC/download_in_google_play_button.svg"
+              alt="Get it on Google Play"
+              width={250}
+              height={71}
+              className="download-button-image"
+            />
+            <span className="coming-soon-badge">COMING SOON</span>
+          </div>
+        </div>
+      </section>
+
       {/* Screenshots Section */}
       <section className="screenshots-section">
         <h2>SCREENSHOTS</h2>
@@ -79,37 +127,14 @@ export default function NvCGame() {
         </div>
       </section>
 
-      {/* Download Section */}
-      <section className="download-section">
-        <h2>GET THE GAME</h2>
-        <div className="download-buttons">
-          <a href="#" className="download-link" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/assets/NvC/wishlist_in_steam_button.png"
-              alt="Wishlist on Steam"
-              width={300}
-              height={100}
-              className="download-button-image"
-            />
-          </a>
-          <a href="#" className="download-link" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/assets/NvC/download_in_app_store_button.png"
-              alt="Download on App Store"
-              width={300}
-              height={100}
-              className="download-button-image"
-            />
-          </a>
-          <a href="#" className="download-link" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/assets/NvC/download_in_google_play_button.png"
-              alt="Get it on Google Play"
-              width={300}
-              height={100}
-              className="download-button-image"
-            />
-          </a>
+      {/* Trailer Section */}
+      <section className="trailer-section">
+        <h2>TRAILER</h2>
+        <div className="trailer-video-container">
+          <video controls className="trailer-video" poster="/assets/NvC/nvc_logo.png">
+            <source src="/assets/NvC/gameplay_preview.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
     </>
