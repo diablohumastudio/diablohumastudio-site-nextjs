@@ -46,7 +46,7 @@ export default function NvCGame() {
       </section>
 
       {/* Download Section */}
-      <section className="download-section">
+      <section className="download-section" id="download">
         <h2>GET THE GAME</h2>
         <div className="direct-download-button">
           <a href="https://drive.google.com/file/d/1IPZ9vxOSyJcEVuCUqxVbqTaoGCpmPqdu/view?usp=sharing" className="download-link" target="_blank" rel="noopener noreferrer">
@@ -128,7 +128,7 @@ export default function NvCGame() {
       </section>
 
       {/* Trailer Section */}
-      <section className="trailer-section">
+      <section className="trailer-section" id="trailer">
         <h2>TRAILER</h2>
         <div className="trailer-video-container">
           <video controls className="trailer-video" poster="/assets/NvC/nvc_logo.png">
