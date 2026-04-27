@@ -49,7 +49,7 @@ export default function NvCGame() {
       <section className="download-section" id="download">
         <h2>GET THE GAME</h2>
         <div className="direct-download-button">
-          <a href="https://drive.google.com/file/d/1IPZ9vxOSyJcEVuCUqxVbqTaoGCpmPqdu/view?usp=sharing" className="download-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://drive.google.com/file/d/1UkpPFlWpaLCqjeLBXhOcFrgkfJ-Shp4w/view?usp=sharing" className="download-link" target="_blank" rel="noopener noreferrer">
             <Image
               src="/assets/NvC/demo_direct_download_button.svg"
               alt="Demo Direct Download"
