@@ -1,7 +1,27 @@
+'use client';
+
 import Head from 'next/head';
 import Image from 'next/image';
+import { useState } from 'react';
+
+const DOWNLOAD_URL = 'https://drive.google.com/file/d/1UkpPFlWpaLCqjeLBXhOcFrgkfJ-Shp4w/view?usp=sharing';
 
 export default function NvCGame() {
+  const [showModal, setShowModal] = useState(false);
+
+  function handleDownloadClick() {
+    setShowModal(true);
+  }
+
+  function handleConfirm() {
+    window.open(DOWNLOAD_URL, '_blank', 'noopener,noreferrer');
+    setShowModal(false);
+  }
+
+  function handleCancel() {
+    setShowModal(false);
+  }
+
   return (
     <>
       <Head>
@@ -49,7 +69,7 @@ export default function NvCGame() {
       <section className="download-section" id="download">
         <h2>GET THE GAME</h2>
         <div className="direct-download-button">
-          <a href="https://drive.google.com/file/d/1UkpPFlWpaLCqjeLBXhOcFrgkfJ-Shp4w/view?usp=sharing" className="download-link" target="_blank" rel="noopener noreferrer">
+          <button className="download-link download-link-btn" onClick={handleDownloadClick}>
             <Image
               src="/assets/NvC/demo_direct_download_button.svg"
               alt="Demo Direct Download"
@@ -57,8 +77,25 @@ export default function NvCGame() {
               height={81}
               className="download-button-image"
             />
-          </a>
+          </button>
         </div>
+
+        {showModal && (
+          <div className="modal-overlay" onClick={handleCancel}>
+            <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+              <h3 className="modal-title">Before you download</h3>
+              <ul className="modal-list">
+                <li>You will be redirected to <strong>Google Drive</strong> to download the demo.</li>
+                <li>The file is <strong>100% safe</strong> — no viruses, no malware.</li>
+                <li>After downloading, <strong>unzip the file</strong> and make sure both the <code>.exe</code> and <code>.dll</code> files are in the <strong>same folder</strong> before running the game.</li>
+              </ul>
+              <div className="modal-actions">
+                <button className="modal-btn modal-btn-confirm" onClick={handleConfirm}>Continue to Download</button>
+                <button className="modal-btn modal-btn-cancel" onClick={handleCancel}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="platform-download-buttons">
           <div className="download-link download-link-disabled" aria-disabled="true">
             <Image
