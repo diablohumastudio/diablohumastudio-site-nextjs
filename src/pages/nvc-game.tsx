@@ -5,9 +5,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const DOWNLOAD_URL = 'https://drive.google.com/file/d/1Vzuirw6rsJVDD54rv2v8sLuhbnWKZdnm/view?usp=sharing';
+const ITCHIO_URL = 'https://diablohumastudio.itch.io/nazis-vs-commies';
+const ITCHIO_PASSWORD = 'nazisvscommies';
 
 export default function NvCGame() {
   const [showModal, setShowModal] = useState(false);
+  const [showItchModal, setShowItchModal] = useState(false);
 
   function handleDownloadClick() {
     setShowModal(true);
@@ -20,6 +23,19 @@ export default function NvCGame() {
 
   function handleCancel() {
     setShowModal(false);
+  }
+
+  function handleItchClick() {
+    setShowItchModal(true);
+  }
+
+  function handleItchConfirm() {
+    window.open(ITCHIO_URL, '_blank', 'noopener,noreferrer');
+    setShowItchModal(false);
+  }
+
+  function handleItchCancel() {
+    setShowItchModal(false);
   }
 
   return (
@@ -78,6 +94,15 @@ export default function NvCGame() {
               className="download-button-image"
             />
           </button>
+          <button className="download-link download-link-btn" onClick={handleItchClick}>
+            <Image
+              src="/assets/NvC/demo_itchio_download_button.svg"
+              alt="Demo Download on itch.io"
+              width={250}
+              height={81}
+              className="download-button-image"
+            />
+          </button>
         </div>
 
         {showModal && (
@@ -86,12 +111,36 @@ export default function NvCGame() {
               <h3 className="modal-title">Before you download</h3>
               <ul className="modal-list">
                 <li>You will be redirected to <strong>Google Drive</strong> to download the demo.</li>
-                <li>The file is <strong>100% safe</strong> — no viruses, no malware.</li>
                 <li>After downloading, <strong>unzip the file</strong> and make sure both the <code>.exe</code> and <code>.dll</code> files are in the <strong>same folder</strong> before running the game.</li>
+                <li>
+                  The file is <strong>100% safe</strong> — no viruses, no malware. When you double-click the <code>.exe</code>, Windows Defender SmartScreen may show a warning. Click <strong>&ldquo;More information&rdquo;</strong> and then <strong>&ldquo;Run anyway&rdquo;</strong> to launch the game.
+                </li>
               </ul>
               <div className="modal-actions">
                 <button className="modal-btn modal-btn-confirm" onClick={handleConfirm}>Continue to Download</button>
                 <button className="modal-btn modal-btn-cancel" onClick={handleCancel}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showItchModal && (
+          <div className="modal-overlay" onClick={handleItchCancel}>
+            <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+              <h3 className="modal-title">Before you download</h3>
+              <ul className="modal-list">
+                <li>You will be redirected to <strong>itch.io</strong> to download the demo.</li>
+                <li>
+                  The itch.io page is <strong>password-protected</strong>. Use the password: <code>{ITCHIO_PASSWORD}</code>
+                </li>
+                <li>After downloading, <strong>unzip the file</strong> and make sure both the <code>.exe</code> and <code>.dll</code> files are in the <strong>same folder</strong> before running the game.</li>
+                <li>
+                  The file is <strong>100% safe</strong> — no viruses, no malware. When you double-click the <code>.exe</code>, Windows Defender SmartScreen may show a warning. Click <strong>&ldquo;More information&rdquo;</strong> and then <strong>&ldquo;Run anyway&rdquo;</strong> to launch the game.
+                </li>
+              </ul>
+              <div className="modal-actions">
+                <button className="modal-btn modal-btn-confirm" onClick={handleItchConfirm}>Continue to itch.io</button>
+                <button className="modal-btn modal-btn-cancel" onClick={handleItchCancel}>Cancel</button>
               </div>
             </div>
           </div>
