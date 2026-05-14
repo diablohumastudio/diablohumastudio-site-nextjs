@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const DOWNLOAD_URL = 'https://drive.google.com/file/d/1UkpPFlWpaLCqjeLBXhOcFrgkfJ-Shp4w/view?usp=sharing';
+const DOWNLOAD_URL = 'https://drive.google.com/file/d/1Vzuirw6rsJVDD54rv2v8sLuhbnWKZdnm/view?usp=sharing';
 
 export default function NvCGame() {
   const [showModal, setShowModal] = useState(false);
