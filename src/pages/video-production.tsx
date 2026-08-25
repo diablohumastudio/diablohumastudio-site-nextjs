@@ -27,10 +27,21 @@ export default function VideoProduction() {
         </div>
       </section>
 
-      {/* Corporate Training Section */}
+      {/* Corporate Training & Education Section */}
       <section className="video-showcase-section">
-        <h2 className="category-title">CORPORATE TRAINING</h2>
-        <div className="video-showcase-grid video-showcase-grid-small">
+        <h2 className="category-title">TRAINING &amp; EDUCATION</h2>
+        <div className="video-showcase-grid">
+          <div className="video-showcase-item">
+            <div className="video-container">
+              <video controls className="showcase-video" poster="/assets/video_production/videos/corporate_training/IntroductionToScenesAndNodes_v1_thumbnail.jpg">
+                <source src="/assets/video_production/videos/corporate_training/IntroductionToScenesAndNodes_v1.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <h3>Godot: Introduction to Scenes and Nodes</h3>
+            <p>First lesson of our Godot Master course: how scenes and nodes fit together, explained from scratch.</p>
+          </div>
+
           <div className="video-showcase-item">
             <div className="video-container">
               <video controls className="showcase-video" poster="/assets/video_production/videos/corporate_training/ProcesoEncendidoHidroelectricaLaurel_thumbnail.jpg">
@@ -38,8 +49,8 @@ export default function VideoProduction() {
                 Your browser does not support the video tag.
               </video>
             </div>
-            <h3>Training Video Title</h3>
-            <p>Professional corporate training video description.</p>
+            <h3>Hydroelectric Plant Start-up Procedure</h3>
+            <p>Operator training video for the El Laurel hydroelectric plant: the full start-up sequence, step by step.</p>
           </div>
         </div>
       </section>
