@@ -58,6 +58,10 @@ export default function Courses() {
           <a href="#" className="btn">Get Our Udemy Course</a>
           <a href="#" className="btn">Get Our YouTube Course</a>
         </div>
+        {/* Covers the section to dim it and swallow clicks while the courses are WIP */}
+        <div className="under-development-overlay">
+          <div className="under-development-banner">UNDER DEVELOPMENT</div>
+        </div>
       </section>
     </>
   );
