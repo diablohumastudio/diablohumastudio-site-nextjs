@@ -1,6 +1,10 @@
 import Image from 'next/image';
+import { commonDict } from '../i18n/common';
+import { useT } from '../i18n/useT';
 
 export default function Footer() {
+  const t = useT(commonDict);
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -11,7 +15,7 @@ export default function Footer() {
               <Image
                 className="social-icon"
                 src="/assets/general/steam_icon_orange.png"
-                alt="Link to Studio Steam account"
+                alt={t.footerSteamAlt}
                 width={20}
                 height={20}
                 loading="lazy"
@@ -21,7 +25,7 @@ export default function Footer() {
               <Image
                 className="social-icon"
                 src="/assets/general/youtube_icon_orange.png"
-                alt="Link to Studio Youtube account"
+                alt={t.footerYoutubeAlt}
                 width={20}
                 height={20}
                 loading="lazy"
@@ -31,7 +35,7 @@ export default function Footer() {
               <Image
                 className="social-icon"
                 src="/assets/general/x_social_icon_orange.png"
-                alt="Link to Studio X social account"
+                alt={t.footerXAlt}
                 width={20}
                 height={20}
                 loading="lazy"
@@ -41,7 +45,7 @@ export default function Footer() {
               <Image
                 className="social-icon"
                 src="/assets/general/instagram_icon_orange.png"
-                alt="Link to Studio Instagram account"
+                alt={t.footerInstagramAlt}
                 width={20}
                 height={20}
                 loading="lazy"
@@ -50,7 +54,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-copyright">
-          <p>&copy; 2024 Diablo Huma Studio. All rights reserved.</p>
+          <p>{t.footerCopyright}</p>
         </div>
       </div>
     </footer>

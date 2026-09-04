@@ -1,8 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { commonDict } from '../i18n/common';
+import { useT } from '../i18n/useT';
 import LanguageSwitch from './LanguageSwitch';
 
 export default function Header() {
+  const t = useT(commonDict);
+
   return (
     <header className="header">
       <Link href="/" className="logo">
@@ -23,16 +27,16 @@ export default function Header() {
       <nav className="nav">
         <div className="site-pages-nav">
           <Link href="/courses" className="site-page-link">
-            Courses
+            {t.navCourses}
           </Link>
           <Link href="/nvc-game" className="site-page-link">
-            NvC Game
+            {t.navNvcGame}
           </Link>
           <Link href="/video-production" className="site-page-link">
-            Videos
+            {t.navVideos}
           </Link>
           <Link href="/contact" className="site-page-link">
-            Contact
+            {t.navContact}
           </Link>
           <LanguageSwitch />
         </div>
