@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { ReactNode, useState } from 'react';
 
-const WINDOWS_DOWNLOAD_URL = 'https://drive.google.com/file/d/1Vzuirw6rsJVDD54rv2v8sLuhbnWKZdnm/view?usp=sharing';
+const WINDOWS_DOWNLOAD_URL = 'https://drive.google.com/open?id=1bp8yi4pSKOiyuXPT3VtJK_pnPEot3E9L&usp=drive_fs';
 const ITCHIO_URL = 'https://diablohumastudio.itch.io/nazis-vs-commies';
 const ITCHIO_PASSWORD = 'nazisvscommies';
 
