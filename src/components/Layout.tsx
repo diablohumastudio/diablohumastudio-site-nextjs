@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Alternates from './Alternates';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -9,6 +10,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
+      <Alternates />
       <Header />
       <main>{children}</main>
       <Footer />
