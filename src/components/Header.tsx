@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import LanguageSwitch from './LanguageSwitch';
 
 export default function Header() {
   return (
@@ -33,6 +34,7 @@ export default function Header() {
           <Link href="/contact" className="site-page-link">
             Contact
           </Link>
+          <LanguageSwitch />
         </div>
       </nav>
     </header>
