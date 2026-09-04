@@ -1,7 +1,14 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useState, FormEvent } from 'react';
+import { contactDict } from '../i18n/pages/contact';
+import { DEFAULT_LOCALE, isLocale } from '../i18n/locales';
+import { useT } from '../i18n/useT';
 
 export default function Contact() {
+  const t = useT(contactDict);
+  const { locale } = useRouter();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,14 +42,15 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        // The locale lets the API answer (and tag the email) in the sender's language.
+        body: JSON.stringify({ ...formData, locale: isLocale(locale) ? locale : DEFAULT_LOCALE }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         setSubmitStatus('success');
-        setSubmitMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+        setSubmitMessage(t.successMessage);
         setFormData({
           name: '',
           email: '',
@@ -52,11 +60,11 @@ export default function Contact() {
         });
       } else {
         setSubmitStatus('error');
-        setSubmitMessage(data.error || 'Something went wrong. Please try again.');
+        setSubmitMessage(data.error || t.genericError);
       }
     } catch (error) {
       setSubmitStatus('error');
-      setSubmitMessage('Network error. Please check your connection and try again.');
+      setSubmitMessage(t.networkError);
     } finally {
       setIsSubmitting(false);
     }
@@ -65,21 +73,21 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Us – Diablo Huma Studios</title>
+        <title>{t.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index,follow" />
-        <meta name="description" content="Get in touch with Diablo Huma Studios for courses, video production, or game inquiries." />
+        <meta name="description" content={t.description} />
       </Head>
 
       <section className="contact-hero-section">
-        <h1>GET IN TOUCH</h1>
-        <p>Have a question or want to work together? We'd love to hear from you!</p>
+        <h1>{t.heroHeading}</h1>
+        <p>{t.heroText}</p>
       </section>
 
       <section className="contact-form-section">
         <div className="contact-container">
           <div className="contact-form-wrapper">
-            <h2>Send us a Message</h2>
+            <h2>{t.formHeading}</h2>
             <form onSubmit={handleSubmit} className="contact-form">
               {/* Honeypot field - hidden from users, but bots will fill it */}
               <input
@@ -93,7 +101,7 @@ export default function Contact() {
               />
 
               <div className="form-group">
-                <label htmlFor="name">Name *</label>
+                <label htmlFor="name">{t.nameLabel}</label>
                 <input
                   type="text"
                   id="name"
@@ -101,14 +109,14 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Your name"
+                  placeholder={t.namePlaceholder}
                   className="form-input"
                   maxLength={100}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email *</label>
+                <label htmlFor="email">{t.emailLabel}</label>
                 <input
                   type="email"
                   id="email"
@@ -116,14 +124,14 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="your.email@example.com"
+                  placeholder={t.emailPlaceholder}
                   className="form-input"
                   maxLength={100}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Subject *</label>
+                <label htmlFor="subject">{t.subjectLabel}</label>
                 <input
                   type="text"
                   id="subject"
@@ -131,14 +139,14 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  placeholder="What is this about?"
+                  placeholder={t.subjectPlaceholder}
                   className="form-input"
                   maxLength={150}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message *</label>
+                <label htmlFor="message">{t.messageLabel}</label>
                 <textarea
                   id="message"
                   name="message"
@@ -146,7 +154,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  placeholder="Tell us more about your inquiry..."
+                  placeholder={t.messagePlaceholder}
                   className="form-textarea"
                   minLength={10}
                   maxLength={1000}
@@ -158,7 +166,7 @@ export default function Contact() {
                 disabled={isSubmitting}
                 className="submit-button"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? t.sending : t.send}
               </button>
 
               {submitMessage && (
@@ -170,10 +178,10 @@ export default function Contact() {
           </div>
 
           <div className="contact-info">
-            <h2>Other Ways to Reach Us</h2>
+            <h2>{t.otherWaysHeading}</h2>
 
             <div className="contact-info-item">
-              <h3>Email</h3>
+              <h3>{t.emailHeading}</h3>
               <p>
                 <a href="mailto:info@diablohumastudio.com">
                   info@diablohumastudio.com
@@ -182,23 +190,23 @@ export default function Contact() {
             </div>
 
             <div className="contact-info-item">
-              <h3>Response Time</h3>
-              <p>We typically respond within 24-48 hours during business days.</p>
+              <h3>{t.responseTimeHeading}</h3>
+              <p>{t.responseTimeText}</p>
             </div>
 
             <div className="contact-info-item">
-              <h3>Services</h3>
+              <h3>{t.servicesHeading}</h3>
               <ul>
-                <li>Game Development</li>
-                <li>Video Production</li>
-                <li>Online Courses</li>
-                <li>Consulting</li>
+                <li>{t.serviceGames}</li>
+                <li>{t.serviceVideo}</li>
+                <li>{t.serviceCourses}</li>
+                <li>{t.serviceConsulting}</li>
               </ul>
             </div>
 
             <div className="contact-info-item">
-              <h3>Follow Us</h3>
-              <p>Stay updated with our latest projects and releases on social media.</p>
+              <h3>{t.followHeading}</h3>
+              <p>{t.followText}</p>
             </div>
           </div>
         </div>

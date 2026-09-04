@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Resend } from 'resend';
+import { DEFAULT_LOCALE, isLocale } from '../../i18n/locales';
+import { contactApiDict } from '../../i18n/pages/contact';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -48,9 +50,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Errors go back to the form in the sender's language.
+  const locale = isLocale(req.body?.locale) ? req.body.locale : DEFAULT_LOCALE;
+  const t = contactApiDict[locale];
+
   // Only allow POST requests
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: t.methodNotAllowed });
   }
 
   // Check origin (only allow requests from your domain in production)
@@ -64,15 +70,13 @@ export default async function handler(
   ];
 
   if (origin && !allowedOrigins.includes(origin)) {
-    return res.status(403).json({ error: 'Forbidden - Invalid origin' });
+    return res.status(403).json({ error: t.forbiddenOrigin });
   }
 
   // Rate limiting
   const clientIp = getClientIp(req);
   if (!rateLimit(clientIp)) {
-    return res.status(429).json({
-      error: 'Too many requests. Please try again later.'
-    });
+    return res.status(429).json({ error: t.tooManyRequests });
   }
 
   try {
@@ -80,17 +84,17 @@ export default async function handler(
 
     // Honeypot check - if 'website' field is filled, it's a bot
     if (website) {
-      return res.status(400).json({ error: 'Invalid submission' });
+      return res.status(400).json({ error: t.invalidSubmission });
     }
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
-      return res.status(400).json({ error: 'All fields are required' });
+      return res.status(400).json({ error: t.allFieldsRequired });
     }
 
     // Validate email format
     if (!validateEmail(email)) {
-      return res.status(400).json({ error: 'Invalid email address' });
+      return res.status(400).json({ error: t.invalidEmail });
     }
 
     // Sanitize inputs
@@ -101,9 +105,7 @@ export default async function handler(
 
     // Check for minimum message length (prevent spam)
     if (sanitizedMessage.length < 10) {
-      return res.status(400).json({
-        error: 'Message is too short. Please provide more details.'
-      });
+      return res.status(400).json({ error: t.messageTooShort });
     }
 
     // Send email using Resend
@@ -177,6 +179,7 @@ export default async function handler(
                   </div>
                 </div>
                 <div class="field" style="margin-top: 20px; font-size: 12px; color: #666;">
+                  <span class="label">Language:</span> ${locale}<br>
                   <span class="label">IP Address:</span> ${clientIp}<br>
                   <span class="label">Timestamp:</span> ${new Date().toLocaleString()}
                 </div>
@@ -197,7 +200,7 @@ export default async function handler(
     console.error('Error sending email:', error);
     console.error('Error details:', error.message, error.name);
     return res.status(500).json({
-      error: 'Failed to send email. Please try again later.',
+      error: t.sendFailed,
       details: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
