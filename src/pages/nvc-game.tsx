@@ -6,6 +6,7 @@ import { ReactNode, useState } from 'react';
 import { commonDict } from '../i18n/common';
 import { nvcGameDict } from '../i18n/pages/nvcGame';
 import { useT } from '../i18n/useT';
+import s from './NvcGame.module.css';
 
 const WINDOWS_DOWNLOAD_URL = 'https://drive.google.com/open?id=1bp8yi4pSKOiyuXPT3VtJK_pnPEot3E9L&usp=drive_fs';
 const ITCHIO_URL = 'https://diablohumastudio.itch.io/nazis-vs-commies';
@@ -131,10 +132,10 @@ export default function NvCGame() {
             alt={t.logoAlt}
             width={600}
             height={200}
-            className="nvc-logo"
+            className={`nvc-logo ${s.logo}`}
             priority
           />
-          <p className="game-tagline">{t.tagline}</p>
+          <p className={`game-tagline ${s.tagline}`}>{t.tagline}</p>
         </div>
       </section>
 

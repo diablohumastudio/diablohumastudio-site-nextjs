@@ -1,0 +1,14 @@
+/* The hero content box grows with the tagline; keep the logo centered inside
+   it and wrap long taglines (Spanish) into two balanced lines. */
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tagline {
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
+}
