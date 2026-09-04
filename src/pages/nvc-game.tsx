@@ -60,20 +60,28 @@ function DownloadButton({ src, alt, width, height, href, onClick }: DownloadButt
 
 type DownloadModalProps = {
   confirmLabel: string;
-  onConfirm: () => void;
-  onCancel: () => void;
+  confirmHref: string;
+  onClose: () => void;
   children: ReactNode;
 };
 
-function DownloadModal({ confirmLabel, onConfirm, onCancel, children }: DownloadModalProps) {
+function DownloadModal({ confirmLabel, confirmHref, onClose, children }: DownloadModalProps) {
   return (
-    <div className="modal-overlay" onClick={onCancel}>
+    <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
         <h3 className="modal-title">Before you download</h3>
         <ul className="modal-list">{children}</ul>
         <div className="modal-actions">
-          <button className="modal-btn modal-btn-confirm" onClick={onConfirm}>{confirmLabel}</button>
-          <button className="modal-btn modal-btn-cancel" onClick={onCancel}>Cancel</button>
+          <a
+            className="modal-btn modal-btn-confirm"
+            href={confirmHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+          >
+            {confirmLabel}
+          </a>
+          <button className="modal-btn modal-btn-cancel" onClick={onClose}>Cancel</button>
         </div>
       </div>
     </div>
@@ -84,11 +92,6 @@ export default function NvCGame() {
   const [activeModal, setActiveModal] = useState<ModalKey | null>(null);
 
   function closeModal() {
-    setActiveModal(null);
-  }
-
-  function openDownloadUrl(url: string) {
-    window.open(url, '_blank', 'noopener,noreferrer');
     setActiveModal(null);
   }
 
@@ -203,8 +206,8 @@ export default function NvCGame() {
         {activeModal === 'windows' && (
           <DownloadModal
             confirmLabel="Continue to Download"
-            onConfirm={() => openDownloadUrl(WINDOWS_DOWNLOAD_URL)}
-            onCancel={closeModal}
+            confirmHref={WINDOWS_DOWNLOAD_URL}
+            onClose={closeModal}
           >
             <li>You will be redirected to <strong>Google Drive</strong> to download the demo.</li>
             <li>After downloading, <strong>unzip the file</strong> and make sure both the <code>.exe</code> and <code>.dll</code> files are in the <strong>same folder</strong> before running the game.</li>
@@ -217,8 +220,8 @@ export default function NvCGame() {
         {activeModal === 'itch' && (
           <DownloadModal
             confirmLabel="Continue to itch.io"
-            onConfirm={() => openDownloadUrl(ITCHIO_URL)}
-            onCancel={closeModal}
+            confirmHref={ITCHIO_URL}
+            onClose={closeModal}
           >
             <li>You will be redirected to <strong>itch.io</strong> to download the demo.</li>
             <li>
@@ -234,8 +237,8 @@ export default function NvCGame() {
         {activeModal === 'android' && ANDROID_APK_URL && (
           <DownloadModal
             confirmLabel="Continue to Download"
-            onConfirm={() => openDownloadUrl(ANDROID_APK_URL)}
-            onCancel={closeModal}
+            confirmHref={ANDROID_APK_URL}
+            onClose={closeModal}
           >
             <li>You are about to download the <strong>.apk</strong> installer directly, outside the Google Play Store.</li>
             <li>Android blocks these installs by default. When prompted, allow <strong>&ldquo;Install unknown apps&rdquo;</strong> for the browser or file manager you downloaded with.</li>
