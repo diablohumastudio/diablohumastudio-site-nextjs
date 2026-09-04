@@ -1,8 +1,8 @@
 const en = {
   title: 'Video Production – Diablo Huma Studios',
   description: 'Professional video production services - fast and economic',
-  heroLine1: 'WE PRODUCE GOOD VIDEOS',
-  heroLine2: 'FAST AND ECONOMIC',
+  heroLine1: 'GOOD VIDEOS, GREAT SCRIPTS,',
+  heroLine2: 'AFFORDABLE PRICES',
   trainingSection: 'TRAINING & EDUCATION',
   godotTitle: 'Godot: Introduction to Scenes and Nodes',
   godotText: 'First lesson of our Godot Master course: how scenes and nodes fit together, explained from scratch.',
@@ -24,8 +24,8 @@ const en = {
 const es: Record<keyof typeof en, string> = {
   title: 'Producción de video – Diablo Huma Studios',
   description: 'Servicios profesionales de producción de video: rápidos y económicos',
-  heroLine1: 'HACEMOS BUENOS VIDEOS',
-  heroLine2: 'RÁPIDO Y ECONÓMICO',
+  heroLine1: 'BUENOS VIDEOS, GRANDES GUIONES,',
+  heroLine2: 'PRECIOS ACCESIBLES',
   trainingSection: 'CAPACITACIÓN Y EDUCACIÓN',
   godotTitle: 'Godot: introducción a escenas y nodos',
   godotText: 'Primera lección de nuestro curso Godot Master: cómo encajan escenas y nodos, explicado desde cero.',
