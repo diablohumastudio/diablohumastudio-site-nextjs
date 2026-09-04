@@ -1,11 +1,15 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { homeDict } from '../i18n/pages/home';
+import { useT } from '../i18n/useT';
 
 export default function Home() {
+  const t = useT(homeDict);
+
   return (
     <>
       <Head>
-        <title>Diablo Huma Studio</title>
+        <title>{t.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
@@ -14,7 +18,7 @@ export default function Home() {
         <Image
           className="hero-image"
           src="/assets/home/hero-image.png"
-          alt="Diablo Huma Studio"
+          alt={t.heroAlt}
           width={1920}
           height={1080}
           priority
@@ -24,12 +28,12 @@ export default function Home() {
       {/* Games Section */}
       <main className="main-content">
         <section className="games-section">
-          <h2>OUR GAMES</h2>
+          <h2>{t.ourGames}</h2>
           <div className="game">
             <div className="game-logo">
               <Image
                 src="/assets/home/nvc_square.png"
-                alt="Logo of NvC game"
+                alt={t.nvcLogoAlt}
                 width={900}
                 height={900}
                 loading="lazy"
@@ -39,7 +43,7 @@ export default function Home() {
               <a href="#" className="platform-icon">
                 <Image
                   src="/assets/home/orange_android.png"
-                  alt="Link to android download NvC game"
+                  alt={t.androidAlt}
                   width={60}
                   height={60}
                   loading="lazy"
@@ -48,7 +52,7 @@ export default function Home() {
               <a href="#" className="platform-icon">
                 <Image
                   src="/assets/home/orange_appstore.png"
-                  alt="Link to appstore download NvC game"
+                  alt={t.appStoreAlt}
                   width={60}
                   height={60}
                   loading="lazy"
@@ -57,7 +61,7 @@ export default function Home() {
               <a href="#" className="platform-icon">
                 <Image
                   src="/assets/home/orange_steam.png"
-                  alt="Link to steam_icon_orange download NvC game"
+                  alt={t.steamAlt}
                   width={60}
                   height={60}
                   loading="lazy"
