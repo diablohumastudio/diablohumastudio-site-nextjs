@@ -4,6 +4,8 @@ import { useState, FormEvent } from 'react';
 import { contactDict } from '../i18n/pages/contact';
 import { DEFAULT_LOCALE, isLocale } from '../i18n/locales';
 import { useT } from '../i18n/useT';
+import titleHero from '../styles/titleHero.module.css';
+import s from './Contact.module.css';
 
 export default function Contact() {
   const t = useT(contactDict);
@@ -79,28 +81,28 @@ export default function Contact() {
         <meta name="description" content={t.description} />
       </Head>
 
-      <section className="contact-hero-section">
+      <section className={titleHero.titleHero}>
         <h1>{t.heroHeading}</h1>
         <p>{t.heroText}</p>
       </section>
 
-      <section className="contact-form-section">
-        <div className="contact-container">
-          <div className="contact-form-wrapper">
+      <section className={s.contactFormSection}>
+        <div className={s.contactContainer}>
+          <div className={s.contactFormWrapper}>
             <h2>{t.formHeading}</h2>
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form onSubmit={handleSubmit} className={s.contactForm}>
               {/* Honeypot field - hidden from users, but bots will fill it */}
               <input
                 type="text"
                 name="website"
                 value={formData.website}
                 onChange={handleChange}
-                className="honeypot"
+                className={s.honeypot}
                 tabIndex={-1}
                 autoComplete="off"
               />
 
-              <div className="form-group">
+              <div className={s.formGroup}>
                 <label htmlFor="name">{t.nameLabel}</label>
                 <input
                   type="text"
@@ -110,12 +112,12 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder={t.namePlaceholder}
-                  className="form-input"
+                  className={s.formInput}
                   maxLength={100}
                 />
               </div>
 
-              <div className="form-group">
+              <div className={s.formGroup}>
                 <label htmlFor="email">{t.emailLabel}</label>
                 <input
                   type="email"
@@ -125,12 +127,12 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder={t.emailPlaceholder}
-                  className="form-input"
+                  className={s.formInput}
                   maxLength={100}
                 />
               </div>
 
-              <div className="form-group">
+              <div className={s.formGroup}>
                 <label htmlFor="subject">{t.subjectLabel}</label>
                 <input
                   type="text"
@@ -140,12 +142,12 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder={t.subjectPlaceholder}
-                  className="form-input"
+                  className={s.formInput}
                   maxLength={150}
                 />
               </div>
 
-              <div className="form-group">
+              <div className={s.formGroup}>
                 <label htmlFor="message">{t.messageLabel}</label>
                 <textarea
                   id="message"
@@ -155,7 +157,7 @@ export default function Contact() {
                   required
                   rows={6}
                   placeholder={t.messagePlaceholder}
-                  className="form-textarea"
+                  className={s.formTextarea}
                   minLength={10}
                   maxLength={1000}
                 />
@@ -164,23 +166,23 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="submit-button"
+                className={s.submitButton}
               >
                 {isSubmitting ? t.sending : t.send}
               </button>
 
               {submitMessage && (
-                <div className={`submit-message ${submitStatus}`}>
+                <div className={`${s.submitMessage}${submitStatus ? ` ${s[submitStatus]}` : ''}`}>
                   {submitMessage}
                 </div>
               )}
             </form>
           </div>
 
-          <div className="contact-info">
+          <div className={s.contactInfo}>
             <h2>{t.otherWaysHeading}</h2>
 
-            <div className="contact-info-item">
+            <div className={s.contactInfoItem}>
               <h3>{t.emailHeading}</h3>
               <p>
                 <a href="mailto:info@diablohumastudio.com">
@@ -189,12 +191,12 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="contact-info-item">
+            <div className={s.contactInfoItem}>
               <h3>{t.responseTimeHeading}</h3>
               <p>{t.responseTimeText}</p>
             </div>
 
-            <div className="contact-info-item">
+            <div className={s.contactInfoItem}>
               <h3>{t.servicesHeading}</h3>
               <ul>
                 <li>{t.serviceGames}</li>
@@ -204,7 +206,7 @@ export default function Contact() {
               </ul>
             </div>
 
-            <div className="contact-info-item">
+            <div className={s.contactInfoItem}>
               <h3>{t.followHeading}</h3>
               <p>{t.followText}</p>
             </div>
