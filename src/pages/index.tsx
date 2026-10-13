@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { homeDict } from '../i18n/pages/home';
 import { useT } from '../i18n/useT';
+import hero from '../styles/hero.module.css';
+import s from './Home.module.css';
 
 export default function Home() {
   const t = useT(homeDict);
@@ -14,9 +16,9 @@ export default function Home() {
       </Head>
 
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className={hero.heroSection}>
         <Image
-          className="hero-image"
+          className={hero.heroImage}
           src="/assets/home/hero-image.png"
           alt={t.heroAlt}
           width={1920}
@@ -26,11 +28,11 @@ export default function Home() {
       </section>
 
       {/* Games Section */}
-      <main className="main-content">
-        <section className="games-section">
+      <main className={s.mainContent}>
+        <section className={s.gamesSection}>
           <h2>{t.ourGames}</h2>
-          <div className="game">
-            <div className="game-logo">
+          <div>
+            <div className={s.gameLogo}>
               <Image
                 src="/assets/home/nvc_square.png"
                 alt={t.nvcLogoAlt}
@@ -39,8 +41,8 @@ export default function Home() {
                 loading="lazy"
               />
             </div>
-            <div className="game-platform-icons">
-              <a href="#" className="platform-icon">
+            <div className={s.gamePlatformIcons}>
+              <a href="#" className={s.platformIcon}>
                 <Image
                   src="/assets/home/orange_android.png"
                   alt={t.androidAlt}
@@ -49,7 +51,7 @@ export default function Home() {
                   loading="lazy"
                 />
               </a>
-              <a href="#" className="platform-icon">
+              <a href="#" className={s.platformIcon}>
                 <Image
                   src="/assets/home/orange_appstore.png"
                   alt={t.appStoreAlt}
@@ -58,7 +60,7 @@ export default function Home() {
                   loading="lazy"
                 />
               </a>
-              <a href="#" className="platform-icon">
+              <a href="#" className={s.platformIcon}>
                 <Image
                   src="/assets/home/orange_steam.png"
                   alt={t.steamAlt}

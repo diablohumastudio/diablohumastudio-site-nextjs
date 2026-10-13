@@ -1,0 +1,19 @@
+/* Hero band shared by the pages that open with a full-width image or video. */
+.heroSection {
+  background: linear-gradient(180deg, #5A2703 0%, #000000 100%);
+  padding: 60px 0;
+  text-align: center;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  transition: transform 0.4s ease;
+}
+
+.heroImage:hover {
+  transform: scale(1.1);
+}
