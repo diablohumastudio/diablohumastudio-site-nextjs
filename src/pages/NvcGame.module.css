@@ -1,14 +1,350 @@
+.heroSection {
+  composes: heroSection from '../styles/hero.module.css';
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+}
+
 /* The hero content box grows with the tagline; keep the logo centered inside
    it and wrap long taglines (Spanish) into two balanced lines. */
 .logo {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 90%;
+  height: auto;
+  filter: drop-shadow(3px 3px 12px rgba(0, 0, 0, 0.9));
+  margin: 0 auto 20px;
 }
 
 .tagline {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   max-width: 34ch;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10px auto 0;
   text-wrap: balance;
+}
+
+.symbolSection {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #000000;
+}
+
+.giratorySymbol {
+  display: inline-block;
+  max-width: 300px;
+  height: auto;
+}
+
+.screenshotsSection {
+  padding: 80px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.screenshotsSection h2 {
+  text-align: center;
+  font-weight: 200;
+  font-family: "Lexend", Sans-serif;
+  line-height: 40px;
+  font-size: 40px;
+  color: #D5D5D5;
+  margin-bottom: 60px;
+}
+
+/* Flex rather than grid: grid pins a partial last row to its leftmost tracks,
+   flex-wrap + justify-content centres it (5 items over 3 columns = 3 + 2). */
+.screenshotsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.screenshotItem {
+  position: relative;
+  flex: 0 1 calc(33.333% - 20px);
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.screenshotItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(231, 148, 94, 0.3);
+}
+
+.screenshotImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.downloadSection {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #000000 0%, #1a0a00 100%);
+  text-align: center;
+}
+
+.downloadSection h2 {
+  font-weight: 200;
+  font-family: "Lexend", Sans-serif;
+  line-height: 40px;
+  font-size: 40px;
+  color: #D5D5D5;
+  margin-bottom: 60px;
+}
+
+.downloadGroup {
+  margin-bottom: 50px;
+}
+
+.downloadGroup:last-of-type {
+  margin-bottom: 0;
+}
+
+.downloadGroupTitle {
+  font-family: "Lexend", Sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  color: #e7945e;
+  margin-bottom: 24px;
+}
+
+.downloadGroupTitle::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e7945e, transparent);
+  margin: 10px auto 0;
+}
+
+.downloadButtonsRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Explicit width: the Image's width prop would otherwise pin the button to
+   its intrinsic 250px, and a max-width alone can never grow it. max-width
+   100% lets it shrink below that on screens narrower than the button. */
+.downloadLink {
+  position: relative;
+  display: inline-flex;
+  flex: 0 1 auto;
+  min-width: 0;
+  width: 310px;
+  max-width: 100%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.downloadLink:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.downloadLinkBtn {
+  composes: downloadLink;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.downloadLinkDisabled {
+  composes: downloadLink;
+  cursor: not-allowed;
+}
+
+.downloadLinkDisabled:hover {
+  transform: none;
+  opacity: 1;
+}
+
+/* Sized by .downloadLink so the button can shrink on narrow screens; a
+   max-width here would stop the image scaling down with its container. */
+.downloadButtonImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.downloadLinkDisabled .downloadButtonImage {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.comingSoonBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-34deg);
+  padding: 6px 18px;
+  border: 2px solid #000000;
+  border-radius: 999px;
+  background: rgba(195, 186, 173, 0.88);
+  color: #000000;
+  font-family: "Lexend", Sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.trailerSection {
+  padding: 80px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.trailerSection h2 {
+  font-weight: 200;
+  font-family: "Lexend", Sans-serif;
+  line-height: 40px;
+  font-size: 40px;
+  color: #D5D5D5;
+  margin-bottom: 60px;
+}
+
+.trailerVideoContainer {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.trailerVideo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 36px 32px;
+  max-width: 480px;
+  width: 90%;
+  color: #F4F4F4;
+}
+
+.modalTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modalList {
+  list-style: disc;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.modalList code {
+  background-color: #333;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.modalBtn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s ease;
+}
+
+.modalBtn:hover {
+  opacity: 0.85;
+}
+
+.modalBtnConfirm {
+  composes: modalBtn;
+  background-color: #c8a84b;
+  color: #000;
+}
+
+.modalBtnCancel {
+  composes: modalBtn;
+  background-color: #444;
+  color: #F4F4F4;
+}
+
+@media (max-width: 1024px) {
+  /* 2 per row: 5 screenshots become 2 + 2 + 1, last one centred */
+  .screenshotItem {
+    flex-basis: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 767px) {
+  .logo {
+    max-width: 95%;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .screenshotItem {
+    flex-basis: 100%;
+  }
+
+  .downloadLink {
+    width: 260px;
+  }
 }

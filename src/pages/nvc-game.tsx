@@ -6,6 +6,7 @@ import { ReactNode, useState } from 'react';
 import { commonDict } from '../i18n/common';
 import { nvcGameDict } from '../i18n/pages/nvcGame';
 import { useT } from '../i18n/useT';
+import hero from '../styles/hero.module.css';
 import s from './NvcGame.module.css';
 
 const WINDOWS_DOWNLOAD_URL = 'https://github.com/diablohumastudio/nvc-releases/releases/download/builds/NazisVsCommies-windows.zip';
@@ -37,12 +38,12 @@ type DownloadButtonProps = {
 
 function DownloadButton({ src, alt, width, height, comingSoonLabel, href, onClick }: DownloadButtonProps) {
   const image = (
-    <Image src={src} alt={alt} width={width} height={height} className="download-button-image" />
+    <Image src={src} alt={alt} width={width} height={height} className={s.downloadButtonImage} />
   );
 
   if (onClick) {
     return (
-      <button className="download-link download-link-btn" onClick={onClick} aria-label={alt}>
+      <button className={s.downloadLinkBtn} onClick={onClick} aria-label={alt}>
         {image}
       </button>
     );
@@ -50,16 +51,16 @@ function DownloadButton({ src, alt, width, height, comingSoonLabel, href, onClic
 
   if (href) {
     return (
-      <a className="download-link" href={href} target="_blank" rel="noopener noreferrer">
+      <a className={s.downloadLink} href={href} target="_blank" rel="noopener noreferrer">
         {image}
       </a>
     );
   }
 
   return (
-    <div className="download-link download-link-disabled" aria-disabled="true">
+    <div className={s.downloadLinkDisabled} aria-disabled="true">
       {image}
-      <span className="coming-soon-badge">{comingSoonLabel}</span>
+      <span className={s.comingSoonBadge}>{comingSoonLabel}</span>
     </div>
   );
 }
@@ -75,17 +76,17 @@ type DownloadModalProps = {
 
 function DownloadModal({ title, cancelLabel, confirmLabel, confirmHref, steps, onClose }: DownloadModalProps) {
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        <h3 className="modal-title">{title}</h3>
-        <ul className="modal-list">
+    <div className={s.modalOverlay} onClick={onClose}>
+      <div className={s.modalBox} onClick={(e) => e.stopPropagation()}>
+        <h3 className={s.modalTitle}>{title}</h3>
+        <ul className={s.modalList}>
           {steps.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
         </ul>
-        <div className="modal-actions">
+        <div className={s.modalActions}>
           <a
-            className="modal-btn modal-btn-confirm"
+            className={s.modalBtnConfirm}
             href={confirmHref}
             target="_blank"
             rel="noopener noreferrer"
@@ -93,7 +94,7 @@ function DownloadModal({ title, cancelLabel, confirmLabel, confirmHref, steps, o
           >
             {confirmLabel}
           </a>
-          <button className="modal-btn modal-btn-cancel" onClick={onClose}>{cancelLabel}</button>
+          <button className={s.modalBtnCancel} onClick={onClose}>{cancelLabel}</button>
         </div>
       </div>
     </div>
@@ -119,46 +120,46 @@ export default function NvCGame() {
       </Head>
 
       {/* Hero Section with Video Background */}
-      <section className="hero-section hero-section-nvc">
-        <div className="video-background">
-          <video autoPlay loop muted playsInline className="hero-video">
+      <section className={s.heroSection}>
+        <div className={hero.videoBackground}>
+          <video autoPlay loop muted playsInline className={hero.heroVideo}>
             <source src="/assets/NvC/new_grlitched_video.mp4" type="video/mp4" />
             {common.videoUnsupported}
           </video>
-          <div className="video-overlay"></div>
+          <div className={hero.videoOverlay}></div>
         </div>
-        <div className="hero-content-nvc">
+        <div className={s.heroContent}>
           <Image
             src="/assets/NvC/nvc_logo.png"
             alt={t.logoAlt}
             width={600}
             height={200}
-            className={`nvc-logo ${s.logo}`}
+            className={s.logo}
             priority
           />
-          <p className={`game-tagline ${s.tagline}`}>{t.tagline}</p>
+          <p className={s.tagline}>{t.tagline}</p>
         </div>
       </section>
 
       {/* Symbol Section */}
-      <section className="symbol-section">
+      <section className={s.symbolSection}>
         <Image
           src="/assets/NvC/giratory_logo.gif"
           alt={t.symbolAlt}
           width={300}
           height={300}
-          className="giratory-symbol"
+          className={s.giratorySymbol}
           unoptimized
         />
       </section>
 
       {/* Download Section */}
-      <section className="download-section" id="download">
+      <section className={s.downloadSection} id="download">
         <h2>{t.getTheGame}</h2>
 
-        <div className="download-group">
-          <h3 className="download-group-title">{t.pcGroup}</h3>
-          <div className="download-buttons-row">
+        <div className={s.downloadGroup}>
+          <h3 className={s.downloadGroupTitle}>{t.pcGroup}</h3>
+          <div className={s.downloadButtonsRow}>
             <DownloadButton
               src="/assets/NvC/demo_direct_download_button.svg"
               alt={t.windowsDirectAlt}
@@ -194,9 +195,9 @@ export default function NvCGame() {
           </div>
         </div>
 
-        <div className="download-group">
-          <h3 className="download-group-title">{t.macGroup}</h3>
-          <div className="download-buttons-row">
+        <div className={s.downloadGroup}>
+          <h3 className={s.downloadGroupTitle}>{t.macGroup}</h3>
+          <div className={s.downloadButtonsRow}>
             <DownloadButton
               src="/assets/NvC/demo_direct_download_button.svg"
               alt={t.macDirectAlt}
@@ -208,9 +209,9 @@ export default function NvCGame() {
           </div>
         </div>
 
-        <div className="download-group">
-          <h3 className="download-group-title">{t.mobileGroup}</h3>
-          <div className="download-buttons-row">
+        <div className={s.downloadGroup}>
+          <h3 className={s.downloadGroupTitle}>{t.mobileGroup}</h3>
+          <div className={s.downloadButtonsRow}>
             <DownloadButton
               src="/assets/NvC/android_direct_download_button.svg"
               alt={t.androidDirectAlt}
@@ -284,17 +285,17 @@ export default function NvCGame() {
       </section>
 
       {/* Screenshots Section */}
-      <section className="screenshots-section">
+      <section className={s.screenshotsSection}>
         <h2>{t.screenshots}</h2>
-        <div className="screenshots-grid">
+        <div className={s.screenshotsGrid}>
           {Array.from({ length: SCREENSHOT_COUNT }, (_, index) => index + 1).map((number) => (
-            <div className="screenshot-item" key={number}>
+            <div className={s.screenshotItem} key={number}>
               <Image
                 src={`/assets/NvC/screenshots/Screenshot_${number}.png`}
                 alt={t.screenshotAlt(number)}
                 width={1920}
                 height={1080}
-                className="screenshot-image"
+                className={s.screenshotImage}
               />
             </div>
           ))}
@@ -302,10 +303,10 @@ export default function NvCGame() {
       </section>
 
       {/* Trailer Section */}
-      <section className="trailer-section" id="trailer">
+      <section className={s.trailerSection} id="trailer">
         <h2>{t.trailer}</h2>
-        <div className="trailer-video-container">
-          <video controls className="trailer-video" poster="/assets/NvC/nvc_logo.png">
+        <div className={s.trailerVideoContainer}>
+          <video controls className={s.trailerVideo} poster="/assets/NvC/nvc_logo.png">
             <source src="/assets/NvC/gameplay_preview.mp4" type="video/mp4" />
             {common.videoUnsupported}
           </video>
