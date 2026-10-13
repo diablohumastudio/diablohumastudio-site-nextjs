@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { coursesDict } from '../i18n/pages/courses';
 import { useT } from '../i18n/useT';
+import s from './Courses.module.css';
 
 export default function Courses() {
   const t = useT(coursesDict);
@@ -15,9 +16,9 @@ export default function Courses() {
       </Head>
 
       {/* Hero Section */}
-      <section className="hero-section hero-section-courses">
+      <section className={s.heroSection}>
         <Image
-          className="hero-image hero-image-courses"
+          className={s.heroImage}
           src="/assets/courses/Godot_Hero_bad_neon_big.png"
           alt={t.heroAlt}
           width={744}
@@ -26,11 +27,11 @@ export default function Courses() {
         />
       </section>
 
-      <section className="learn-process-section">
+      <section className={s.learnProcessSection}>
         <h1>{t.heading}</h1>
         <p>{t.intro}</p>
-        <div className="learn-process-items">
-          <div className="learn-process-item">
+        <div className={s.learnProcessItems}>
+          <div className={s.learnProcessItem}>
             <Image
               src="/assets/courses/ciompu.png"
               alt={t.step1Alt}
@@ -39,7 +40,7 @@ export default function Courses() {
             />
             <h3>{t.step1}</h3>
           </div>
-          <div className="learn-process-item">
+          <div className={s.learnProcessItem}>
             <Image
               src="/assets/courses/Courses_Opt_Circle.png"
               alt={t.step2Alt}
@@ -48,7 +49,7 @@ export default function Courses() {
             />
             <h3>{t.step2}</h3>
           </div>
-          <div className="learn-process-item">
+          <div className={s.learnProcessItem}>
             <Image
               src="/assets/courses/course.png"
               alt={t.step3Alt}
@@ -58,13 +59,13 @@ export default function Courses() {
             <h3>{t.step3}</h3>
           </div>
         </div>
-        <div className="courses-buttons">
-          <a href="#" className="btn">{t.udemyButton}</a>
-          <a href="#" className="btn">{t.youtubeButton}</a>
+        <div className={s.coursesButtons}>
+          <a href="#" className={s.btn}>{t.udemyButton}</a>
+          <a href="#" className={s.btn}>{t.youtubeButton}</a>
         </div>
         {/* Covers the section to dim it and swallow clicks while the courses are WIP */}
-        <div className="under-development-overlay">
-          <div className="under-development-banner">{t.underDevelopment}</div>
+        <div className={s.underDevelopmentOverlay}>
+          <div className={s.underDevelopmentBanner}>{t.underDevelopment}</div>
         </div>
       </section>
     </>
