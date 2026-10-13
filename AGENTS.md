@@ -1,6 +1,6 @@
 # diablohumastudio-site-nextjs — Project Instructions
 
-Marketing and teaching site for DiabloHumaStudio. Next.js 14 (Pages Router) + TypeScript, plain CSS (no framework).
+Marketing site for DiabloHumaStudio. Next.js 14 (Pages Router) + TypeScript, plain CSS (no framework). The teaching platform lives in its own repo (`diablohumastudio-learn`, served at `learn.diablohumastudio.com`); this site only redirects the old `/learn/...` and `/incine/...` links there (`next.config.js`).
 
 ## Commands
 
@@ -20,7 +20,7 @@ Marketing and teaching site for DiabloHumaStudio. Next.js 14 (Pages Router) + Ty
 - Never commit unless explicitly asked. One commit per change item (split multiple items into multiple commits).
 - Header: `<type>(<scope>): <summary>`
   - type: feat | fix | refactor | test | docs | chore
-  - scope: capitalized site area (e.g. Portfolio, Videos, Courses, NvC, Learn, Layout, Deps)
+  - scope: capitalized site area (e.g. Portfolio, Videos, Courses, NvC, Contact, Layout, Deps)
   - summary: imperative, no trailing period
 - Body: for non-trivial changes, a short prose paragraph (wrapped ~76 columns) explaining what was done and why.
 - End the message with the `Co-Authored-By: Claude ...` trailer.
@@ -30,12 +30,6 @@ Marketing and teaching site for DiabloHumaStudio. Next.js 14 (Pages Router) + Ty
 - The site auto-deploys from `main` on Vercel, but `vercel.json` skips the build unless the pushed commit's message contains `[deploy]`. Deployments are per push, so the marker goes on the last commit of the batch (e.g. `feat(Home): ... [deploy]`). Pushes without it cost nothing on Vercel.
 - Every deployment stores a full copy of `public/` (mostly videos), and Vercel keeps at least the last 10 to 20 of them. Keep videos web-sized: H.264, CRF ~24, `-movflags +faststart`.
 
-## Importing questions
-
-- Before preparing or importing a question file, remind the user of the open item in [TODO.md](TODO.md) about answer ids ("Importador: conservar los ids de las respuestas al reemplazar"): replacing a question from a file without answer ids gives its answers new ids, which breaks the link with exam attempts already saved. Drop this note once that item is ticked.
-
 ## Required reading
 
 - [docs/css-and-nextjs-conventions.md](docs/css-and-nextjs-conventions.md) — CSS and Next.js conventions. Read before adding any page, component or styles. Key rule: never add styles to `src/styles/globals.css`; use CSS Modules.
-- [docs/learn-courses-and-slides.md](docs/learn-courses-and-slides.md) — how to add courses, classes and slides to the unlisted `/learn` presentations section.
-- [docs/exam.md](docs/exam.md) — timed, server-graded exams, listed per course at `/learn/<course>/exams` and taken at `/learn/exam/<id>`: API routes, data model, rules and setup. Read before touching exams, the question bank's answer ids or `firebase/firestore.rules`. Key rule: the correct option never reaches a student's browser; opening, drawing, receiving answers and grading stay on the server.
