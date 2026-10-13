@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { commonDict } from '../i18n/common';
 import { useT } from '../i18n/useT';
+import s from './Footer.module.css';
 
 type SocialAltKey = 'footerSteamAlt' | 'footerInstagramAlt' | 'footerFacebookAlt' | 'footerYoutubeAlt'
   | 'footerTiktokAlt' | 'footerRedditAlt' | 'footerXAlt' | 'footerItchioAlt';
@@ -23,11 +24,11 @@ export default function Footer() {
   const t = useT(commonDict);
 
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-branding">
+    <footer className={s.footer}>
+      <div className={s.footerContent}>
+        <div className={s.footerBranding}>
           <p>Diablo Huma Studio</p>
-          <div className="social-icons">
+          <div className={s.socialIcons}>
             {SOCIAL_LINKS.map(({ icon, href, altKey }) => (
               <a
                 key={icon}
@@ -37,7 +38,7 @@ export default function Footer() {
                 aria-label={t[altKey]}
               >
                 <Image
-                  className="social-icon"
+                  className={s.socialIcon}
                   src={`/assets/general/social/${icon}_icon_orange.svg`}
                   alt={t[altKey]}
                   width={20}
@@ -48,7 +49,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="footer-copyright">
+        <div className={s.footerCopyright}>
           <p>{t.footerCopyright}</p>
         </div>
       </div>

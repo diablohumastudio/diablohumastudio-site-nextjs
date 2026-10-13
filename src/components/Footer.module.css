@@ -1,0 +1,51 @@
+.footer {
+  color: #e7945e;
+  background-color: #000000;
+  padding: 20px;
+  border-top: 1px solid rgba(244, 244, 244, 0.1);
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footerBranding {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footerBranding p {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+}
+
+.socialIcon {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+}
+
+.footerCopyright p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 767px) {
+  .footerContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .socialIcon {
+    max-width: 80%;
+  }
+}

@@ -20,7 +20,7 @@ export default function Header() {
   const menuToggleRef = useRef<HTMLInputElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
-  // The mobile menu is a CSS checkbox hack (globals.css); close it whenever
+  // The mobile menu is a CSS checkbox hack (Header.module.css); close it whenever
   // the visitor interacts with the page instead of the menu.
   useEffect(() => {
     function closeMenu() {
@@ -42,8 +42,8 @@ export default function Header() {
   }, [router.events]);
 
   return (
-    <header className="header" ref={headerRef}>
-      <Link href="/" className="logo">
+    <header className={s.header} ref={headerRef}>
+      <Link href="/" className={s.logo}>
         <Image
           src="/assets/general/header_logo.png"
           alt="Diablo Huma Studio"
@@ -52,21 +52,21 @@ export default function Header() {
           priority
         />
       </Link>
-      <input type="checkbox" id="menu-toggle" className="menu-toggle" ref={menuToggleRef} />
-      <label htmlFor="menu-toggle" className="hamburger">
+      <input type="checkbox" id="menu-toggle" className={s.menuToggle} ref={menuToggleRef} />
+      <label htmlFor="menu-toggle" className={s.hamburger}>
         <span></span>
         <span></span>
         <span></span>
       </label>
-      <nav className="nav">
-        <div className="site-pages-nav">
+      <nav className={s.nav}>
+        <div className={s.sitePagesNav}>
           {NAV_LINKS.map(({ href, labelKey }) => {
             const isActive = router.pathname === href;
             return (
               <Link
                 key={href}
                 href={href}
-                className={`site-page-link ${s.navLink}${isActive ? ` ${s.navLinkActive}` : ''}`}
+                className={`${s.navLink}${isActive ? ` ${s.navLinkActive}` : ''}`}
                 aria-current={isActive ? 'page' : undefined}
               >
                 {t[labelKey]}

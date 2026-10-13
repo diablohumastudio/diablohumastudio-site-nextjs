@@ -1,7 +1,61 @@
-/* Layered on top of the global .site-page-link (globals.css, legacy): the
-   selectors carry the element name so they win over the global rules
-   whatever the stylesheet order. */
-a.navLink {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a0502e6;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.1);
+}
+
+.logo {
+  padding-left: 20px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+/* The mobile menu is a checkbox hack: the hidden input toggles the nav and the hamburger. */
+.menuToggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(231, 148, 94, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 20px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #e7945e;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav {
+  display: flex;
+}
+
+.sitePagesNav {
+  display: flex;
+  padding-right: 20px;
+}
+
+.navLink {
   padding: 6px 12px;
   margin-left: 8px;
   border-radius: 6px;
@@ -10,8 +64,8 @@ a.navLink {
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-a.navLink:hover,
-a.navLink:focus-visible {
+.navLink:hover,
+.navLink:focus-visible {
   color: #e7945e;
   background-color: rgba(231, 148, 94, 0.12);
   text-decoration: underline;
@@ -19,29 +73,92 @@ a.navLink:focus-visible {
   outline: none;
 }
 
-a.navLinkActive {
+.navLinkActive {
   color: #f4f4f4;
   font-weight: 600;
   background-color: rgba(231, 148, 94, 0.22);
   box-shadow: inset 0 -2px 0 #e7945e;
 }
 
-a.navLinkActive:hover,
-a.navLinkActive:focus-visible {
+.navLinkActive:hover,
+.navLinkActive:focus-visible {
   color: #ffffff;
   background-color: rgba(231, 148, 94, 0.32);
   text-decoration: none;
 }
 
 @media (max-width: 767px) {
-  a.navLink {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    padding-left: 10px;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background-color: #0a0502f5;
+    transition: right 0.3s ease;
+    border-left: 1px solid rgba(244, 244, 244, 0.1);
+  }
+
+  .menuToggle:checked ~ .nav {
+    right: 0;
+  }
+
+  /* Spans are 3px tall with 3px margins, so their centers sit 9px apart:
+     moving the outer two by 9px onto the middle one gives a symmetric X. */
+  .menuToggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .menuToggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menuToggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .sitePagesNav {
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .navLink {
     margin-left: 0;
     padding: 15px 10px;
     border-radius: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(244, 244, 244, 0.1);
   }
 
-  a.navLink:hover,
-  a.navLink:focus-visible {
+  .navLink:hover,
+  .navLink:focus-visible {
     text-decoration: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .sitePagesNav {
+    padding-right: 10px;
+  }
+
+  .navLink {
+    font-size: 0.9rem;
   }
 }
