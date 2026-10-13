@@ -1,0 +1,104 @@
+/* Grid of embedded videos with a title and a caption, used by the video production and portfolio pages. */
+.videoShowcaseSection {
+  padding: 60px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.categoryTitle {
+  text-align: center;
+  font-weight: 200;
+  font-family: "Lexend", Sans-serif;
+  line-height: 40px;
+  font-size: 40px;
+  color: #D5D5D5;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.categoryTitle::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #e7945e, transparent);
+  margin: 20px auto 0;
+}
+
+/* Declared after .categoryTitle on purpose: inside a showcase section its 60px margin wins. */
+.videoShowcaseSection h2 {
+  text-align: center;
+  font-weight: 200;
+  font-family: "Lexend", Sans-serif;
+  line-height: 40px;
+  font-size: 40px;
+  color: #D5D5D5;
+  margin-bottom: 60px;
+}
+
+.videoShowcaseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.videoShowcaseGridSmall {
+  composes: videoShowcaseGrid;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.videoShowcaseItem {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.videoShowcaseItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(231, 148, 94, 0.2);
+}
+
+.videoShowcaseItem h3 {
+  font-family: "Lexend", Sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #e7945e;
+  margin-bottom: 12px;
+}
+
+.videoShowcaseItem p {
+  font-family: "Lexend", Sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #D5D5D5;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.showcaseVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .videoShowcaseGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

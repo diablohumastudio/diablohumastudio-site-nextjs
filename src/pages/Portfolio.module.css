@@ -1,0 +1,167 @@
+.portfolioSection {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolioBio {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.portfolioBio p {
+  font-family: "Lexend", Sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(244, 244, 244, 0.75);
+}
+
+.portfolioSkills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.portfolioSkills li {
+  font-family: "Lexend", Sans-serif;
+  font-size: 0.9rem;
+  color: #e7945e;
+  padding: 8px 18px;
+  border: 1px solid rgba(231, 148, 94, 0.3);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.portfolioGameLogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.portfolioIntro {
+  max-width: 860px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.portfolioIntro p {
+  font-family: "Lexend", Sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(244, 244, 244, 0.75);
+}
+
+/* Two columns so 1920px-wide tool screenshots stay legible; flex-wrap keeps
+   an odd last figure centred, same trick as the NvC screenshots grid. */
+.portfolioFigureGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.portfolioFigure {
+  flex: 0 1 calc(50% - 12px);
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(231, 148, 94, 0.1);
+}
+
+.portfolioFigure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolioFigure figcaption {
+  padding: 14px 18px;
+  font-family: "Lexend", Sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(244, 244, 244, 0.75);
+}
+
+.portfolioCtaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.portfolioCta {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e7945e 0%, #d67d45 100%);
+  color: #000000;
+  font-family: "Lexend", Sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolioCta:hover {
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 148, 94, 0.4);
+}
+
+.portfolioList {
+  max-width: 860px;
+  margin: 0 auto 40px;
+}
+
+.portfolioList li {
+  font-family: "Lexend", Sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(244, 244, 244, 0.75);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(231, 148, 94, 0.1);
+}
+
+.portfolioList li:last-child {
+  border-bottom: none;
+}
+
+.portfolioList strong {
+  color: #e7945e;
+  font-weight: 400;
+}
+
+/* An embedded player in the showcase grid: same box as a video, without the iframe border. */
+.showcaseFrame {
+  composes: showcaseVideo from '../styles/videoShowcase.module.css';
+  border: 0;
+}
+
+.portfolioContact {
+  text-align: center;
+}
+
+.portfolioContact p {
+  font-family: "Lexend", Sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(244, 244, 244, 0.75);
+}
+
+.portfolioContact a {
+  color: #e7945e;
+}
+
+.portfolioContact a:hover {
+  color: #f4a56e;
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .portfolioFigure {
+    flex-basis: 100%;
+  }
+}

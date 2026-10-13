@@ -1,0 +1,38 @@
+.heroSection {
+  composes: heroSection from '../styles/hero.module.css';
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.videoOverlayBlack {
+  composes: videoOverlay from '../styles/hero.module.css';
+  background: #00000005;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+}
+
+.heroContent h1 {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 300;
+  font-size: 3.5rem;
+  color: #F4F4F4;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+@media (max-width: 767px) {
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+}

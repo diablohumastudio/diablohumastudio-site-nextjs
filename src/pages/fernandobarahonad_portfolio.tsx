@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import titleHero from '../styles/titleHero.module.css';
+import showcase from '../styles/videoShowcase.module.css';
+import s from './Portfolio.module.css';
 
 const PORTFOLIO_ASSETS = '/assets/fernandobarahonad_portfolio';
 const EMBALE_STEAM_URL = 'https://store.steampowered.com/app/4488120/Embale__Wooden_Kart_Race/';
@@ -16,7 +19,7 @@ type FigureProps = {
 
 function Figure({ src, alt, width, height, caption }: FigureProps) {
   return (
-    <figure className="portfolio-figure">
+    <figure className={s.portfolioFigure}>
       <Image src={src} alt={alt} width={width} height={height} />
       <figcaption>{caption}</figcaption>
     </figure>
@@ -34,15 +37,15 @@ export default function FernandoBarahonaPortfolio() {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
-      <section className="contact-hero-section">
+      <section className={titleHero.titleHero}>
         <h1>Fernando Barahona Dos Santos</h1>
         <p>Ingeniero electrónico · Desarrollador de videojuegos en Godot · Audio interactivo con Wwise · Docente</p>
       </section>
 
       {/* Perfil */}
-      <section className="portfolio-section">
-        <h2 className="category-title">PERFIL</h2>
-        <div className="portfolio-bio">
+      <section className={s.portfolioSection}>
+        <h2 className={showcase.categoryTitle}>PERFIL</h2>
+        <div className={s.portfolioBio}>
           <p>
             Ingeniero electrónico (ESPE) y director de DiabloHumaStudio. Dirijo y programo <em>Nazis vs Commies</em>,
             un tower defense educativo en Godot 4 en el que diseñé e implementé todo el audio interactivo con
@@ -51,7 +54,7 @@ export default function FernandoBarahonaPortfolio() {
             videojuegos con Godot en el Club de Videojuegos de la ESPE.
           </p>
         </div>
-        <ul className="portfolio-skills">
+        <ul className={s.portfolioSkills}>
           <li>Audiokinetic Wwise</li>
           <li>Godot 4 / GDScript</li>
           <li>Integración Wwise–Godot</li>
@@ -64,9 +67,9 @@ export default function FernandoBarahonaPortfolio() {
       </section>
 
       {/* Audio interactivo */}
-      <section className="portfolio-section">
-        <h2 className="category-title">AUDIO INTERACTIVO — NAZIS VS COMMIES</h2>
-        <div className="portfolio-intro">
+      <section className={s.portfolioSection}>
+        <h2 className={showcase.categoryTitle}>AUDIO INTERACTIVO — NAZIS VS COMMIES</h2>
+        <div className={s.portfolioIntro}>
           <p>
             Proyecto en Wwise 2025.1 integrado en Godot 4 con el plugin oficial. 54 eventos sobre 45 sonidos
             fuente, música interactiva gobernada por un State Group de 11 estados, contenedores aleatorios para
@@ -75,7 +78,7 @@ export default function FernandoBarahonaPortfolio() {
             estados y RTPC desde el juego.
           </p>
         </div>
-        <div className="portfolio-figure-grid">
+        <div className={s.portfolioFigureGrid}>
           <Figure
             src={`${PORTFOLIO_ASSETS}/wwise/state.png`}
             alt="Wwise: State Group music_state_group con sus 11 estados"
@@ -129,16 +132,16 @@ export default function FernandoBarahonaPortfolio() {
       </section>
 
       {/* Embale */}
-      <section className="portfolio-section">
-        <h2 className="category-title">EMBALE — WOODEN KART RACE</h2>
-        <div className="portfolio-intro">
+      <section className={s.portfolioSection}>
+        <h2 className={showcase.categoryTitle}>EMBALE — WOODEN KART RACE</h2>
+        <div className={s.portfolioIntro}>
           <p>
             Juego de carreras de karts de madera en Godot 4.7, con demo publicada en Steam. Colaboré con el
             equipo desde octubre de 2025 (alrededor de 200 commits) a cargo de dos sistemas completos: la tienda
             del juego y la bolsa de power-ups.
           </p>
         </div>
-        <div className="portfolio-figure-grid">
+        <div className={s.portfolioFigureGrid}>
           <Figure
             src={`${PORTFOLIO_ASSETS}/embale/store_1.png`}
             alt="Embale: pantalla de la tienda con categorías e ítems"
@@ -175,20 +178,20 @@ export default function FernandoBarahonaPortfolio() {
             caption="Arquitectura documentada del sistema: autoría en Blender → importación → colocación en pista → precalentamiento → recogida → bolsa → efecto con pool de objetos. El runtime nunca conoce un power-up concreto; añadir uno es solo contenido."
           />
         </div>
-        <div className="portfolio-cta-row">
-          <a className="portfolio-cta" href={EMBALE_STEAM_URL} target="_blank" rel="noopener noreferrer">
+        <div className={s.portfolioCtaRow}>
+          <a className={s.portfolioCta} href={EMBALE_STEAM_URL} target="_blank" rel="noopener noreferrer">
             Ver Embale en Steam
           </a>
         </div>
       </section>
 
       {/* Nazis vs Commies */}
-      <section className="portfolio-section">
-        <h2 className="category-title">NAZIS VS COMMIES</h2>
-        <div className="portfolio-game-logo">
+      <section className={s.portfolioSection}>
+        <h2 className={showcase.categoryTitle}>NAZIS VS COMMIES</h2>
+        <div className={s.portfolioGameLogo}>
           <Image src="/assets/NvC/nvc_logo.png" alt="Nazis vs Commies" width={600} height={200} />
         </div>
-        <div className="portfolio-intro">
+        <div className={s.portfolioIntro}>
           <p>
             Tower defense 2D educativo sobre la Segunda Guerra Mundial, desarrollado en Godot 4 desde 2022.
             Dirección de arte, arquitectura de código y programación de todos los sistemas; producción y
@@ -196,7 +199,7 @@ export default function FernandoBarahonaPortfolio() {
             Android e iOS en fase de pruebas.
           </p>
         </div>
-        <div className="portfolio-figure-grid">
+        <div className={s.portfolioFigureGrid}>
           <Figure
             src="/assets/NvC/screenshots/Screenshot_1.png"
             alt="Nazis vs Commies: captura de juego"
@@ -212,17 +215,17 @@ export default function FernandoBarahonaPortfolio() {
             caption="Cada nivel cambia el estado musical en Wwise; las variantes intense entran al subir la presión enemiga."
           />
         </div>
-        <div className="portfolio-cta-row">
-          <Link className="portfolio-cta" href="/nvc-game">
+        <div className={s.portfolioCtaRow}>
+          <Link className={s.portfolioCta} href="/nvc-game">
             Página del juego, tráiler y demo
           </Link>
         </div>
       </section>
 
       {/* Docencia */}
-      <section className="portfolio-section">
-        <h2 className="category-title">DOCENCIA</h2>
-        <ul className="portfolio-list">
+      <section className={s.portfolioSection}>
+        <h2 className={showcase.categoryTitle}>DOCENCIA</h2>
+        <ul className={s.portfolioList}>
           <li>
             <strong>Instructor de Godot Engine</strong> — Club de Videojuegos ESPE, 2024–2025. Clases prácticas de
             escenas, nodos, señales y GDScript.
@@ -235,10 +238,10 @@ export default function FernandoBarahonaPortfolio() {
             becarios del Estado para universidades del país y del exterior.
           </li>
         </ul>
-        <div className="video-showcase-grid">
-          <div className="video-showcase-item">
-            <div className="video-container">
-              <video controls className="showcase-video" poster="/assets/video_production/videos/corporate_training/IntroductionToScenesAndNodes_v1_thumbnail.jpg">
+        <div className={showcase.videoShowcaseGrid}>
+          <div className={showcase.videoShowcaseItem}>
+            <div className={showcase.videoContainer}>
+              <video controls className={showcase.showcaseVideo} poster="/assets/video_production/videos/corporate_training/IntroductionToScenesAndNodes_v1_thumbnail.jpg">
                 <source src="/assets/video_production/videos/corporate_training/IntroductionToScenesAndNodes_v1.mp4" type="video/mp4" />
                 Tu navegador no soporta la etiqueta de video.
               </video>
@@ -246,9 +249,9 @@ export default function FernandoBarahonaPortfolio() {
             <h3>Godot: Introduction to Scenes and Nodes</h3>
             <p>Primera lección del curso Godot Master: cómo se relacionan escenas y nodos, explicado desde cero.</p>
           </div>
-          <div className="video-showcase-item">
-            <div className="video-container">
-              <video controls className="showcase-video" poster="/assets/video_production/videos/corporate_training/ProcesoEncendidoHidroelectricaLaurel_thumbnail.jpg">
+          <div className={showcase.videoShowcaseItem}>
+            <div className={showcase.videoContainer}>
+              <video controls className={showcase.showcaseVideo} poster="/assets/video_production/videos/corporate_training/ProcesoEncendidoHidroelectricaLaurel_thumbnail.jpg">
                 <source src="/assets/video_production/videos/corporate_training/ProcesoEncendidoHidroelectricaLaurel.mp4" type="video/mp4" />
                 Tu navegador no soporta la etiqueta de video.
               </video>
@@ -256,10 +259,10 @@ export default function FernandoBarahonaPortfolio() {
             <h3>Proceso de encendido de la Central Hidroeléctrica El Laurel</h3>
             <p>Video de capacitación para operadores: la secuencia completa de arranque, paso a paso.</p>
           </div>
-          <div className="video-showcase-item">
-            <div className="video-container">
+          <div className={showcase.videoShowcaseItem}>
+            <div className={showcase.videoContainer}>
               <iframe
-                className="showcase-video"
+                className={s.showcaseFrame}
                 src={TCP_IP_VIDEO_EMBED_URL}
                 title="Modelo TCP/IP"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -273,9 +276,9 @@ export default function FernandoBarahonaPortfolio() {
       </section>
 
       {/* Contacto */}
-      <section className="portfolio-section">
-        <h2 className="category-title">CONTACTO</h2>
-        <div className="portfolio-contact">
+      <section className={s.portfolioSection}>
+        <h2 className={showcase.categoryTitle}>CONTACTO</h2>
+        <div className={s.portfolioContact}>
           <p>
             <a href="mailto:fernandobarahonad@diablohumastudio.com">fernandobarahonad@diablohumastudio.com</a>
           </p>
