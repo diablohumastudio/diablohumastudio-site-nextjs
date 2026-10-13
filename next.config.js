@@ -14,39 +14,35 @@ const nextConfig = {
         destination: 'https://discord.gg/5JNJcmHSQ',
         permanent: false,
       },
-      // Class links shared before the section moved to /learn.
+      // The learn platform moved to its own site on 2026-10-13; it maps its old URL shapes
+      // itself, so the path goes through unchanged. Next adds no locale prefix to an
+      // external destination, so each rule is written per locale with `locale: false`.
+      // With `locale: false` the path is matched with the default locale already prefixed:
+      // `/en/learn/...` is what a request for `/learn/...` looks like (`/learn/...` matches nothing).
       {
-        source: '/incine/:path*',
-        destination: '/learn/:path*',
+        source: '/en/learn/:path*',
+        destination: 'https://learn.diablohumastudio.com/:path*',
         permanent: true,
+        locale: false,
       },
-      // Practice has no home of its own any more: it starts from a course (/learn/<course>).
       {
-        source: '/learn/practice',
-        destination: '/learn',
-        permanent: false,
-      },
-      // Exams are listed per course (/learn/<course>/exams); /learn/exam/<id> still takes one.
-      {
-        source: '/learn/exam',
-        destination: '/learn',
-        permanent: false,
-      },
-      // Links shared before the quiz became /learn/practice and /learn/teacher.
-      {
-        source: '/learn/quiz',
-        destination: '/learn',
+        source: '/es/learn/:path*',
+        destination: 'https://learn.diablohumastudio.com/es/:path*',
         permanent: true,
+        locale: false,
+      },
+      // Class links shared before the section was called /learn.
+      {
+        source: '/en/incine/:path*',
+        destination: 'https://learn.diablohumastudio.com/:path*',
+        permanent: true,
+        locale: false,
       },
       {
-        source: '/learn/quiz/teacher',
-        destination: '/learn/teacher/students-practice-info',
+        source: '/es/incine/:path*',
+        destination: 'https://learn.diablohumastudio.com/es/:path*',
         permanent: true,
-      },
-      {
-        source: '/learn/quiz/questions',
-        destination: '/learn/teacher/questions',
-        permanent: true,
+        locale: false,
       },
     ]
   },
