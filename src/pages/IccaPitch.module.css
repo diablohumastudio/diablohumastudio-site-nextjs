@@ -1,0 +1,24 @@
+/* Full-screen pitch video over the NvC background, shared by the ICCA pitch and gameplay pages. */
+.iccaSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.iccaVideoWrapper {
+  position: relative;
+  z-index: 2;
+  width: 85%;
+  max-width: 960px;
+}
+
+.iccaPitchVideo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
+}
